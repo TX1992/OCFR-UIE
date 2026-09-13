@@ -1,0 +1,10 @@
+{
+  "dataset": "LSUI",
+  "split_dir": "splits/LSUI",
+  "initialization": "assets/initialization_seed7.pth",
+  "output_dir": "outputs/lsui",
+  "data_parallel": false,
+  "refinement_epochs": 1,
+  "dinov2_repo": "",
+  "dinov2_checkpoint": ""
+}

@@ -52,35 +52,6 @@ def load_checkpoint(
     }
 
 
-def read_checkpoint_metadata(
-    checkpoint_path: str | Path,
-    *,
-    map_location: str | torch.device = "cpu",
-) -> dict[str, Any]:
-    raw = torch.load(checkpoint_path, map_location=map_location)
-    if not isinstance(raw, Mapping):
-        return {}
-    metadata = raw.get("meta", {})
-    return dict(metadata) if isinstance(metadata, Mapping) else {}
-
-
-def model_kwargs_from_metadata(metadata: Mapping[str, Any]) -> dict[str, Any]:
-    """Recover released architecture arguments."""
-
-    config = metadata.get("config", {})
-    if not isinstance(config, Mapping):
-        config = {}
-    width = int(
-        metadata.get(
-            "feature_channels",
-            config.get("feature_channels", 28),
-        )
-    )
-    if width <= 0 or width % 4:
-        raise ValueError("checkpoint feature_channels must be positive and divisible by four")
-    return {"feature_channels": width}
-
-
 def save_checkpoint(
     path: str | Path,
     model: nn.Module,

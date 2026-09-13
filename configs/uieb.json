@@ -1,0 +1,10 @@
+{
+  "dataset": "UIEB",
+  "split_dir": "splits/UIEB",
+  "initialization": "assets/initialization_seed7.pth",
+  "output_dir": "outputs/uieb",
+  "data_parallel": true,
+  "refinement_epochs": 2,
+  "dinov2_repo": "",
+  "dinov2_checkpoint": ""
+}
